@@ -14,7 +14,8 @@ The front-end project is based upon:
 
 To run,
 1. Start the API
-2. "npm start" the site
+2. "nm install" the site
+3. "npm start" the site
 
 If there are reference problems with the site, the following packages are required:
 npm install @chakra-ui/core @emotion/core @emotion/styled emotion-theming
