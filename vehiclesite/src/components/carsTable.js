@@ -27,6 +27,7 @@ const CarsTable = (props) => {
         id: null,
         vehicleType: 'Car',
         vehicleCarDetails: {
+          detailId: null,
           make: '',
           model: '',
           engine: '',
@@ -43,6 +44,8 @@ const CarsTable = (props) => {
     try {
       var url = getApi() + `vehicles`;
       var verb = 'POST';
+      values.vehicleCarDetails.wheels = parseInt(values.vehicleCarDetails.wheels);
+      values.vehicleCarDetails.doors = parseInt(values.vehicleCarDetails.doors);
       if (values.id != null) {
         url += `/${values.id}`
         verb = 'PUT';
@@ -120,7 +123,6 @@ const CarsTable = (props) => {
 
   function validateWheels(value) {
     let error;
-    console.log(`wheels ok? ${value}`)
     if (!value) {
       error = "Value required";
     }
@@ -135,12 +137,11 @@ const CarsTable = (props) => {
 
   function validateDoors(value) {
     let error;
-    console.log(`wheels ok? ${value}`)
     if (!value) {
       error = "Value required";
     }
     else if (isNaN(value)) {
-      error = "Not numericxxxx";
+      error = "Not numeric";
     }
     else if (value < 1) {
       error = "Need 1 or more wheels";
@@ -154,8 +155,8 @@ const CarsTable = (props) => {
         id: null,
         vehicleType: "Car",
         vehicleCarDetails: {
-          make: "a",
-          model: "b",
+          make: "",
+          model: "",
           engine: "",
           doors: 4,
           wheels: 4,
@@ -238,6 +239,14 @@ const CarsTable = (props) => {
                             <FormControl isInvalid={form.errors.id && form.touched.id}>
                               <FormLabel htmlFor="id">ID</FormLabel>
                               <Input {...field} id="id" placeholder="id" isReadOnly={true} />
+                            </FormControl>
+                          )}
+                        </Field>
+                        <Field name="vehicleCarDetails.detailId">
+                          {({ field, form }) => (
+                            <FormControl isInvalid={form.errors.detailId && form.touched.detailId}>
+                              <FormLabel htmlFor="detailId">ID</FormLabel>
+                              <Input {...field} id="detailId" placeholder="detailId" isReadOnly={true} />
                             </FormControl>
                           )}
                         </Field>
