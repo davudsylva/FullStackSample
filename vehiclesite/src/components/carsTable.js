@@ -237,16 +237,14 @@ const CarsTable = (props) => {
                         <Field name="id">
                           {({ field, form }) => (
                             <FormControl isInvalid={form.errors.id && form.touched.id}>
-                              <FormLabel htmlFor="id">ID</FormLabel>
-                              <Input {...field} id="id" placeholder="id" isReadOnly={true} />
+                              <Input {...field} id="id" placeholder="id" isReadOnly={true} hidden={true}/>
                             </FormControl>
                           )}
                         </Field>
                         <Field name="vehicleCarDetails.detailId">
                           {({ field, form }) => (
                             <FormControl isInvalid={form.errors.detailId && form.touched.detailId}>
-                              <FormLabel htmlFor="detailId">ID</FormLabel>
-                              <Input {...field} id="detailId" placeholder="detailId" isReadOnly={true} />
+                              <Input {...field} id="detailId" placeholder="detailId" isReadOnly={true} hidden={true}/>
                             </FormControl>
                           )}
                         </Field>

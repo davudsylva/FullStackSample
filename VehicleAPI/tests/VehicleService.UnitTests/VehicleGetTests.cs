@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VehicleMicroservice.UnitTests
 {
-    public class ProductGetTests
+    public class VehicleGetTests
     {
         // Given a set of existing products
         // When the complete product list is requested

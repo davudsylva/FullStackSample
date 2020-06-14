@@ -12,6 +12,11 @@ The front-end project is based upon:
 * Formik provides form processing 
 * Emotion-JS provides CSS-in-JS 
 
+To run,
+1. Start the API
+2. "npm start" the site
+
+If there are reference problems with the site, the following packages are required:
 npm install @chakra-ui/core @emotion/core @emotion/styled emotion-theming
 npm install react-icons
 npm install formik --save

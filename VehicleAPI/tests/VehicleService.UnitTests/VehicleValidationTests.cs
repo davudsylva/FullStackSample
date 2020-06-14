@@ -5,7 +5,7 @@ using VehicleMicroservice.Contracts.Models;
 
 namespace VehicleMicroservice.UnitTests
 {
-    public class ProductValidationTests
+    public class VehicleValidationTests
     {
         // Given a vehicle with a null make
         // When the vehicle is validated

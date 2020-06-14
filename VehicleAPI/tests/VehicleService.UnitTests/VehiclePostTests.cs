@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VehicleMicroservice.UnitTests
 {
-    public class ProductPostTests
+    public class VehiclePostTests
     {
         // Given an invalid vehicle
         // When we try to save it
