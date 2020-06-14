@@ -40,7 +40,6 @@ const CarsTable = (props) => {
 
 
   const saveCar = async(values) => {
-    alert("trying to save")
     try {
       var url = getApi() + `vehicles`;
       var verb = 'POST';
@@ -215,7 +214,7 @@ const CarsTable = (props) => {
           </PseudoBox>
   };
 
-  return  <Box backgroundColor="#e0e0e0" padding="0px" width="100%" >
+  return  <Box backgroundColor="#e0e0e0" padding="0px" width="100%" padding="10" >
             <SelectionTable title="Cars" 
                             url="vehicles" 
                             rowFormatter={rowFormat}

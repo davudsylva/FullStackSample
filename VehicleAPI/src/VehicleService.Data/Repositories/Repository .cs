@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 
-namespace ProductMicroservice.Data.Repositories
+namespace VehicleMicroservice.Data.Repositories
 {
     public class Repository 
     {

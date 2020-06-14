@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProductMicroservice.API.Models;
-using ProductMicroservice.Contracts.Models;
-using ProductMicroservice.Core.Services;
-using ProductMicroservice.Models;
+using VehicleMicroservice.API.Models;
+using VehicleMicroservice.Contracts.Models;
+using VehicleMicroservice.Core.Services;
+using VehicleMicroservice.Models;
 
-namespace ProductMicroservice.Controllers
+namespace VehicleMicroservice.Controllers
 {
     /// <summary>
     /// Operations to manage vehicles 
@@ -38,7 +38,7 @@ namespace ProductMicroservice.Controllers
         /// <para>Returns the complete set of all vehicles 
         /// </para>
         /// </remarks>
-        /// <returns>The set of filtered products</returns>
+        /// <returns>The set of filtered vehicles</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Vehicle>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetVehicles()
@@ -54,7 +54,7 @@ namespace ProductMicroservice.Controllers
         /// <para>Returns the vehicles specified by ID.
         /// </para>
         /// </remarks>
-        /// <returns>The set of requested products</returns>
+        /// <returns>The set of requested vehicles</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Vehicle), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Vehicle), StatusCodes.Status404NotFound)]
@@ -73,10 +73,10 @@ namespace ProductMicroservice.Controllers
         /// Create a new vehicle.
         /// </summary>
         /// <remarks>
-        /// <para>Creates a new product, allocating an ID in the process.
+        /// <para>Creates a new vehicle, allocating an ID in the process.
         /// </para>
         /// </remarks>
-        /// <returns>Returns newly created product, including its ID.</returns>
+        /// <returns>Returns newly created vehicle, including its ID.</returns>
         [HttpPost]
         public async Task<IActionResult> CreateVehicle(Vehicle vehicle)
         {
@@ -85,10 +85,10 @@ namespace ProductMicroservice.Controllers
         }
 
         /// <summary>
-        /// Updates an new product.
+        /// Updates an new vehicle.
         /// </summary>
         /// <remarks>
-        /// <para>Updates the mutable attributes of the supplied product.
+        /// <para>Updates the mutable attributes of the supplied vehicle.
         /// </para>
         /// </remarks>
         [HttpPut("{id}")]
@@ -106,10 +106,10 @@ namespace ProductMicroservice.Controllers
         }
 
         /// <summary>
-        /// Deletes a product.
+        /// Deletes a vehicle.
         /// </summary>
         /// <remarks>
-        /// <para>Deletes the specified product.
+        /// <para>Deletes the specified vehicle.
         /// </para>
         /// </remarks>
         [HttpDelete("{id}")]

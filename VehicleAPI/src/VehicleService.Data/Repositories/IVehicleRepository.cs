@@ -1,10 +1,10 @@
-﻿using ProductMicroservice.Contracts.Models;
+﻿using VehicleMicroservice.Contracts.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductMicroservice.Data.Repositories
+namespace VehicleMicroservice.Data.Repositories
 {
     public interface IVehicleRepository
     {

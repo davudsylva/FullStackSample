@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using Moq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using ProductMicroservice.Core.Services;
-using ProductMicroservice.Data.Repositories;
+using VehicleMicroservice.Core.Services;
+using VehicleMicroservice.Data.Repositories;
 using Microsoft.Extensions.Configuration;
-using ProductMicroservice.Controllers;
+using VehicleMicroservice.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using ProductMicroservice.Contracts.Models;
+using VehicleMicroservice.Contracts.Models;
 using System;
 
-namespace ProductMicroservice.IntegrationTests
+namespace VehicleMicroservice.IntegrationTests
 {
     public class TestBase
     {
@@ -23,18 +23,18 @@ namespace ProductMicroservice.IntegrationTests
             var baseDir = System.IO.Directory.GetCurrentDirectory();
             var configuration = new ConfigurationBuilder()
                .SetBasePath(System.IO.Directory.GetCurrentDirectory())
-                .AddInMemoryCollection(new[] { new KeyValuePair<string, string>("ConnectionString", "Data Source=../../../TestDatabase/products.db") })
+                .AddInMemoryCollection(new[] { new KeyValuePair<string, string>("ConnectionString", "Data Source=../../../TestDatabase/vehicles.db") })
               .Build();
 
-            ProductMicroservice.API.Mappers.DapperMappers.Config();
+            VehicleMicroservice.API.Mappers.DapperMappers.Config();
 
-            var productRepository = new ProductRepository(configuration);
-            var productService = new VehicleService(new VehicleValidator(), 
+            var productRepository = new VehicleRepository(configuration);
+            var vehicleService = new VehicleService(new VehicleValidator(), 
                                                     productRepository);
 
             var logger = new Mock<ILogger<VehiclesController>>();
 
-            var controller = new VehiclesController(productService, logger.Object);
+            var controller = new VehiclesController(vehicleService, logger.Object);
             return controller;
         }
     }

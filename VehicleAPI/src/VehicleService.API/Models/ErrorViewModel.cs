@@ -1,6 +1,6 @@
 using System;
 
-namespace ProductMicroservice.Models
+namespace VehicleMicroservice.Models
 {
     public class ErrorViewModel
     {

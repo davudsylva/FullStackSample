@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProductMicroservice.API.Models
+namespace VehicleMicroservice.API.Models
 {
     public class ErrorResponse
     {

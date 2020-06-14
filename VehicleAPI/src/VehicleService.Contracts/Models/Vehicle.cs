@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProductMicroservice.Contracts.Models
+namespace VehicleMicroservice.Contracts.Models
 {
     public class Vehicle
     {

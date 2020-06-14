@@ -7,5 +7,5 @@
     }
   },
   "AllowedHosts": "*",
-  "ConnectionString": "Data Source=TestDatabase/products.db"
+  "ConnectionString": "Data Source=TestDatabase/vehicles.db"
 }

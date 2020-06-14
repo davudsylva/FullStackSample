@@ -1,16 +1,16 @@
 ﻿using Dapper;
-using ProductMicroservice.Contracts.Models;
+using VehicleMicroservice.Contracts.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 
-namespace ProductMicroservice.Data.Repositories
+namespace VehicleMicroservice.Data.Repositories
 {
-    public class ProductRepository : Repository, IVehicleRepository
+    public class VehicleRepository : Repository, IVehicleRepository
     {
-        public ProductRepository(IConfiguration config) : base(config)
+        public VehicleRepository(IConfiguration config) : base(config)
         {
         }
 
@@ -129,9 +129,9 @@ namespace ProductMicroservice.Data.Repositories
             using (var connection = CreateConnection())
             {
                 await connection.OpenAsync();
-                await connection.ExecuteAsync($"delete from VehicleCarDetail where id = '{vehicleId}' collate nocase");
-                await connection.ExecuteAsync($"delete from VehicleBoatDetail where id = '{vehicleId}' collate nocase");
-                await connection.ExecuteAsync($"delete from Vehicles where id = '{vehicleId}' collate nocase");
+                await connection.ExecuteAsync($"delete from VehicleCarDetail where VehicleId = '{vehicleId}' collate nocase");
+                await connection.ExecuteAsync($"delete from VehicleBoatDetail where VehicleId = '{vehicleId}' collate nocase");
+                await connection.ExecuteAsync($"delete from Vehicle where id = '{vehicleId}' collate nocase");
             }
         }
     }

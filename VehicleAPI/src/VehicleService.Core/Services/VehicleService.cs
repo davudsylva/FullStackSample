@@ -1,20 +1,20 @@
-﻿using ProductMicroservice.Contracts.Models;
-using ProductMicroservice.Data.Repositories;
+﻿using VehicleMicroservice.Contracts.Models;
+using VehicleMicroservice.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProductMicroservice.Core.Services
+namespace VehicleMicroservice.Core.Services
 {
     public class VehicleService : IVehicleService
     {
         IVehicleRepository _vehicleRepository;
-        IVehicleValidator _productValidator;
+        IVehicleValidator _vehicleValidator;
 
-        public VehicleService(IVehicleValidator productValidator, IVehicleRepository vehicleRepository)
+        public VehicleService(IVehicleValidator vehicleValidator, IVehicleRepository vehicleRepository)
         {
             _vehicleRepository = vehicleRepository;
-            _productValidator = productValidator;
+            _vehicleValidator = vehicleValidator;
         }
 
         public async Task<IEnumerable<Vehicle>> GetByName()
@@ -40,7 +40,7 @@ namespace ProductMicroservice.Core.Services
 
         public async Task<Vehicle> Create(Vehicle product)
         {
-            var validation = _productValidator.ValidateVehicle(product);
+            var validation = _vehicleValidator.ValidateVehicle(product);
             if (!validation.isOk)
             {
                 throw new Exception($"Validation Error: {validation.reason}");

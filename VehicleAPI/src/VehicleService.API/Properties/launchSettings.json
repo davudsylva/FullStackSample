@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ProductMicroservice": {
+    "VehicleMicroservice": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

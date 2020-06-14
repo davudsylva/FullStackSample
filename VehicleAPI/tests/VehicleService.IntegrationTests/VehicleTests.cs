@@ -4,31 +4,32 @@ using System.Collections.Generic;
 using Moq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using ProductMicroservice.Core.Services;
-using ProductMicroservice.Data.Repositories;
+using VehicleMicroservice.Core.Services;
+using VehicleMicroservice.Data.Repositories;
 using Microsoft.Extensions.Configuration;
-using ProductMicroservice.Controllers;
+using VehicleMicroservice.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using ProductMicroservice.Contracts.Models;
+using VehicleMicroservice.Contracts.Models;
 using System;
-using ProductMicroservice.API.Models;
+using VehicleMicroservice.API.Models;
 
-namespace ProductMicroservice.IntegrationTests
+namespace VehicleMicroservice.IntegrationTests
 {
     // Integration tests design to test round trip to a live database. 
-    public class ProductTests : TestBase
+    public class VehicleTests : TestBase
     {
         [Fact]
         // Given a newly created vehicle
         // When I get that vehicle
         // Then I should be able to get the vehicle back
-        public async Task CanCreateAndGetProduct()
+        public async Task CanCreateAndGetVehicle()
         {
             var controller = EstablishEnvironment();
 
             var testVehicle = new Vehicle 
-            { 
+            {
+                VehicleType = "Car",
                 VehicleCarDetails = new VehicleCarDetails()
                 {
                     Make = "Ford",
@@ -40,14 +41,14 @@ namespace ProductMicroservice.IntegrationTests
                 }
             };
 
-            // Ensure we can create a new product
+            // Ensure we can create a new vehicle
             var createResponse = await controller.CreateVehicle(testVehicle);
             var okCreateResult = createResponse as OkObjectResult;
             Assert.NotNull(okCreateResult);
             var createdItem = okCreateResult.Value as Vehicle;
 
             // Ensure we can get the product we just created
-            var reGetResponse = await controller.GetVehicleById(createdItem.Id);
+            var reGetResponse = await controller.GetVehicleById(createdItem.Id.Value);
             var reGetResult = reGetResponse as OkObjectResult;
             Assert.NotNull(reGetResult);
             var regotItem = reGetResult.Value as Vehicle;
@@ -65,7 +66,7 @@ namespace ProductMicroservice.IntegrationTests
 
         [Fact]
         // Given a newly created vehicle
-        // When I delete that product
+        // When I delete that vehcile
         // Then I should not be able to get it again
         public async Task CanCreateAndDeleteVehicle()
         {
@@ -73,6 +74,7 @@ namespace ProductMicroservice.IntegrationTests
 
             var testVehicle = new Vehicle
             {
+                VehicleType = "Car",
                 VehicleCarDetails = new VehicleCarDetails()
                 {
                     Make = "Ford",
@@ -84,19 +86,19 @@ namespace ProductMicroservice.IntegrationTests
                 }
             };
 
-            // Ensure we can create a new product
+            // Ensure we can create a new vehicle
             var createResponse = await controller.CreateVehicle(testVehicle);
             var okCreateResult = createResponse as OkObjectResult;
             Assert.NotNull(okCreateResult);
             var createdItem = okCreateResult.Value as Vehicle;
 
-            // Ensure we can get the product we just created
-            var deleteResponse = await controller.DeleteVehicle(createdItem.Id);
+            // Ensure we can get the vehicle we just created
+            var deleteResponse = await controller.DeleteVehicle(createdItem.Id.Value);
             var deleteResult = deleteResponse as OkResult;
             Assert.NotNull(deleteResult);
 
             // Ensure we can not get the product we just deleted
-            var reGetResponse = await controller.GetVehicleById(createdItem.Id);
+            var reGetResponse = await controller.GetVehicleById(createdItem.Id.Value);
             var reGetResult = reGetResponse as NotFoundResult;
             Assert.NotNull(reGetResult);
         }
@@ -112,6 +114,7 @@ namespace ProductMicroservice.IntegrationTests
 
             var testVehicle = new Vehicle
             {
+                VehicleType = "Car",
                 VehicleCarDetails = new VehicleCarDetails()
                 {
                     Make = "Ford",
@@ -134,12 +137,12 @@ namespace ProductMicroservice.IntegrationTests
             createdItem.VehicleCarDetails.Doors = 5;
 
             // Ensure we can update the product we just created
-            var updateResponse = await controller.UpdateVehicle(createdItem.Id, createdItem);
+            var updateResponse = await controller.UpdateVehicle(createdItem.Id.Value, createdItem);
             var updateResult = updateResponse as OkResult;
             Assert.NotNull(updateResult);
 
             // Ensure we can get the product we just updated
-            var reGetResponse = await controller.GetVehicleById(createdItem.Id);
+            var reGetResponse = await controller.GetVehicleById(createdItem.Id.Value);
             var reGetResult = reGetResponse as OkObjectResult;
             Assert.NotNull(reGetResult);
             var reGotItem = reGetResult.Value as Vehicle;

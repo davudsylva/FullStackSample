@@ -1,13 +1,13 @@
 using System;
 using Xunit;
 using Moq;
-using ProductMicroservice.Core.Services;
-using ProductMicroservice.Data.Repositories;
+using VehicleMicroservice.Core.Services;
+using VehicleMicroservice.Data.Repositories;
 using System.Collections.Generic;
-using ProductMicroservice.Contracts.Models;
+using VehicleMicroservice.Contracts.Models;
 using System.Threading.Tasks;
 
-namespace ProductMicroservice.UnitTests
+namespace VehicleMicroservice.UnitTests
 {
     public class ProductGetTests
     {

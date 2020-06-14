@@ -11,11 +11,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ProductMicroservice.API.Filters;
-using ProductMicroservice.Core.Services;
-using ProductMicroservice.Data.Repositories;
+using VehicleMicroservice.API.Filters;
+using VehicleMicroservice.Core.Services;
+using VehicleMicroservice.Data.Repositories;
 
-namespace ProductMicroservice
+namespace VehicleMicroservice
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace ProductMicroservice
         {
             services.AddControllersWithViews(opts => opts.Filters.Add<ExceptionFilter>());
             services.AddScoped<IVehicleService, VehicleService>();
-            services.AddScoped<IVehicleRepository, ProductRepository>();
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IVehicleValidator, VehicleValidator>();
 
             services.AddCors(o => o.AddPolicy("AllowAllPolicy", builder =>
@@ -50,7 +50,7 @@ namespace ProductMicroservice
                 }
             );
 
-            ProductMicroservice.API.Mappers.DapperMappers.Config();
+            VehicleMicroservice.API.Mappers.DapperMappers.Config();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

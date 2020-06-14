@@ -1,9 +1,9 @@
 using System;
 using Xunit;
-using ProductMicroservice.Core.Services;
-using ProductMicroservice.Contracts.Models;
+using VehicleMicroservice.Core.Services;
+using VehicleMicroservice.Contracts.Models;
 
-namespace ProductMicroservice.UnitTests
+namespace VehicleMicroservice.UnitTests
 {
     public class ProductValidationTests
     {
@@ -42,6 +42,7 @@ namespace ProductMicroservice.UnitTests
 
             var testVehicle = new Vehicle
             {
+                VehicleType = "Car",
                 VehicleCarDetails = new VehicleCarDetails()
                 {
                     Make = "Ford",

@@ -1,9 +1,9 @@
-﻿using ProductMicroservice.Contracts.Models;
+﻿using VehicleMicroservice.Contracts.Models;
 
-namespace ProductMicroservice.Core.Services
+namespace VehicleMicroservice.Core.Services
 {
     public interface IVehicleValidator
     {
-        (bool isOk, string reason) ValidateVehicle(Vehicle product);
+        (bool isOk, string reason) ValidateVehicle(Vehicle vehicle);
     }
 }
